@@ -5,9 +5,10 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
-import formReducer from './store/formReducer'
+import logger from 'redux-logger'
+import { formReducer } from './store/formStore'
 
-const store = createStore(formReducer)
+const store = createStore(formReducer, applyMiddleware(logger))
 
 ReactDOM.render(
   <Provider store={store}>

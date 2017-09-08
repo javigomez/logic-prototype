@@ -1,11 +1,42 @@
-import React from 'react'
+import React, { PureComponent } from 'react'
+import { connect } from 'react-redux'
+import { commitAnswer, getBlockByRef } from '../store/formStore'
 
-const Block = ({ title, type, onCommit }) => (
-  <section>
-    <h1>{title}</h1>
-    {type === 'short_text' && <input type='text' />}
-    <button onClick={onCommit}>Ok</button>
-  </section>
-)
+class Block extends PureComponent{
+  constructor(){
+    super()
+    this.handleCommit = this.handleCommit.bind(this)
+  }
 
-export default Block
+  handleCommit() {
+    this.props.onCommit(this.props.blockRef, this.input.value)
+  }
+
+  render() {
+    const { title, type } = this.props
+    return(
+      <section>
+        <h1>{title}</h1>
+        {type === 'short_text' && <input type='text' ref={node => {this.input = node}} />}
+        <button onClick={this.handleCommit}>Ok</button>
+      </section>
+    )
+  }
+}
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    ...getBlockByRef(state, ownProps.blockRef)
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onCommit: (ref, value) => dispatch(commitAnswer(ref, value))
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Block)
