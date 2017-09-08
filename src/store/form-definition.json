@@ -1,0 +1,23 @@
+{
+  "id": "qfbezweLq6",
+  "title": "This form has a title",
+  "fields": [{
+    "id": "1",
+    "ref": "fld001",
+    "type": "short_text",
+    "title": "Type 'yay' or 'nay'",
+    "validations": {
+      "required": true
+    }
+  }, {
+    "id": "2",
+    "ref": "fld002",
+    "type": "statement",
+    "title": "You typed 'yay'"
+  }, {
+    "id": "3",
+    "ref": "fld003",
+    "type": "statement",
+    "title": "You typed 'nay'"
+  }]
+}
