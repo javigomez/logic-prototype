@@ -1,4 +1,5 @@
 import getInitialState from './getInitialState'
+import evaluateLogic from '../logic/evaluateLogic'
 
 const actions = {
   commitAnswer: 'COMMIT_ANSWER'
@@ -34,7 +35,7 @@ export const getBlockByRef = (state, ref) => {
 /**
   Selects the current visible fields according to the logic
 */
-export const getCurrentPath = (state) => {
+export const getCurrentBranch = (state) => {
   if (!state.logic) {
     return state.fields
   }
@@ -50,5 +51,10 @@ export const getCurrentPath = (state) => {
 
   logicFields = [].concat.apply([], logicFields)
 
-  return state.fields.filter(field => !logicFields.some(ref => ref === field.ref))
+  return state.fields.filter(field => {
+    if (!logicFields.some(ref => ref === field.ref)) {
+      return true
+    }
+    return evaluateLogic(field.ref, state.logic, state.answers)
+  })
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import BlockList from './BlockList';
 import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
@@ -12,6 +12,6 @@ const store = createStore(formReducer, applyMiddleware(logger))
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <BlockList />
   </Provider>, document.getElementById('root'));
 registerServiceWorker();
