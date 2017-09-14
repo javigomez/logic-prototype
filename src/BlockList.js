@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import logo from './logo.svg';
 import Block from './components/block'
 import './BlockList.css';
-import { getCurrentPath } from './store/formStore'
+import { getCurrentBranch } from './store/formStore'
 
 class App extends Component {
   render() {
@@ -18,7 +18,7 @@ class App extends Component {
 const mapStateToProps = state => {
   return {
     ...state,
-    fields: getCurrentPath(state)
+    fields: getCurrentBranch(state)
   }
 }
 

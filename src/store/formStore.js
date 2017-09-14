@@ -32,15 +32,21 @@ export const getBlockByRef = (state, ref) => {
   return state.fields.find(field => field.ref === ref)
 }
 
+export const getLogic = state => state.logic 
+
+export const getAnswers = state => state.answers 
+
+export const getBlocks = state => state.fields 
+
 /**
   Selects the current visible fields according to the logic
 */
 export const getCurrentBranch = (state) => {
-  if (!state.logic) {
-    return state.fields
+  if (!getLogic(state)) {
+    return getBlocks(state)
   }
 
-  let logicFields = state.logic.map(logic =>
+  let logicFields = getLogic(state).map(logic =>
     logic.actions
       .filter(action =>
         action.details.to.type === 'field'
@@ -51,10 +57,10 @@ export const getCurrentBranch = (state) => {
 
   logicFields = [].concat.apply([], logicFields)
 
-  return state.fields.filter(field => {
+  return getBlocks(state).filter(field => {
     if (!logicFields.some(ref => ref === field.ref)) {
       return true
     }
-    return evaluateLogic(field.ref, state.logic, state.answers)
+    return evaluateLogic(field.ref, getLogic(state), getAnswers(state))
   })
 }
