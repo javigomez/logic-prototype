@@ -6,6 +6,9 @@ const evaluateAction = (action, answers) => {
       return null
     }
   }
+  if(action.condition.op === 'and') {
+    return null
+  }
   return action.details.to.value
 }
 
@@ -14,9 +17,7 @@ export const blockHasLogic = (ref, logic) => {
 }
 
 export const getNextBlockRef = (ref, logic, answers) => {
-  return getActions(ref, logic).map(action => {
-    return evaluateAction(action, answers)
-  }).reduce((prev, curr) => {
-    return curr || prev
-  }, null)
+  return getActions(ref, logic).map(action =>
+    evaluateAction(action, answers)
+  ).reduce((prev, curr) => curr || prev, null)
 }
