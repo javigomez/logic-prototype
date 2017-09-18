@@ -1,0 +1,74 @@
+{
+  "id": "JyNcg3",
+  "title": "nw-form",
+  "last_updated_at": "2017-09-18T09:16:02+00:00",
+  "variables": {
+    "score": 0
+  },
+  "theme": {
+    "href": "https:\/\/api.typeform.com\/themes\/gJ3gfQ"
+  },
+  "settings": {
+    "language": "en",
+    "is_public": true,
+    "progress_bar": "percentage",
+    "show_progress_bar": true,
+    "show_typeform_branding": false,
+    "meta": {
+      "allow_indexing": true
+    }
+  },
+  "fields": [
+    {
+      "id": "JXJsIMGL8aWW",
+      "title": "first block always jump to third",
+      "ref": "6bb16851-e59d-4a1f-a28b-e5c99d53db46",
+      "properties": {
+        "hide_marks": false,
+        "button_text": "Continue"
+      },
+      "type": "statement"
+    },
+    {
+      "id": "KxQsozjQRZhX",
+      "title": "second block",
+      "ref": "de07a25b-f765-43d2-9808-dcd9ab1e74f3",
+      "properties": {
+        "hide_marks": false,
+        "button_text": "Continue"
+      },
+      "type": "statement"
+    },
+    {
+      "id": "ARBBsY7GuvaN",
+      "title": "third block",
+      "ref": "215d2ba2-49e1-44f2-8037-287b6c0b575e",
+      "properties": {
+        "hide_marks": false,
+        "button_text": "Continue"
+      },
+      "type": "statement"
+    }
+  ],
+  "logic": [
+    {
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "215d2ba2-49e1-44f2-8037-287b6c0b575e"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ],
+      "type": "field",
+      "ref": "6bb16851-e59d-4a1f-a28b-e5c99d53db46"
+    }
+  ]
+}

@@ -1,0 +1,222 @@
+{
+  "id": "JyNcg3",
+  "title": "nw-form",
+  "last_updated_at": "2017-09-14T14:37:17+00:00",
+  "variables": {
+    "score": 0
+  },
+  "theme": {
+    "href": "https:\/\/api.typeform.com\/themes\/gJ3gfQ"
+  },
+  "settings": {
+    "language": "en",
+    "is_public": true,
+    "progress_bar": "percentage",
+    "show_progress_bar": true,
+    "show_typeform_branding": false,
+    "meta": {
+      "allow_indexing": true
+    }
+  },
+  "fields": [
+    {
+      "id": "tyyHWd79Obcg",
+      "title": "Say \u0027yay\u0027 or \u0027nay\u0027",
+      "ref": "054e4eb0-f276-484a-bab4-f6c8c39035c5",
+      "validations": {
+        "required": false
+      },
+      "type": "short_text"
+    },
+    {
+      "id": "NnI07J1r0iki",
+      "title": "You said \u0027yay\u0027",
+      "ref": "1cbab94c-96aa-4900-971a-16511733df3c",
+      "properties": {
+        "hide_marks": false,
+        "button_text": "Continue"
+      },
+      "type": "statement"
+    },
+    {
+      "id": "BCkcP8bYPCin",
+      "title": "next to yay",
+      "ref": "7b134749-353c-4d9b-b731-162289449871",
+      "properties": {
+        "hide_marks": false,
+        "button_text": "Continue"
+      },
+      "type": "statement"
+    },
+    {
+      "id": "dnZrsw4nmQuH",
+      "title": "You said \u0027nay\u0027",
+      "ref": "310b1dd4-597c-41e9-bccb-9a35d1917e44",
+      "properties": {
+        "hide_marks": false,
+        "button_text": "Continue"
+      },
+      "type": "statement"
+    },
+    {
+      "id": "yexBP6mQJl13",
+      "title": "next to nay",
+      "ref": "12a27468-9375-4e77-ae5b-f46771c2e9b3",
+      "properties": {
+        "hide_marks": false,
+        "button_text": "Continue"
+      },
+      "type": "statement"
+    },
+    {
+      "id": "HjNGs8br1DwN",
+      "title": "You didn\u0027t say \u0027yay\u0027 or \u0027nay\u0027",
+      "ref": "25892c0c-9a5d-4079-88a7-8f1351dca607",
+      "properties": {
+        "hide_marks": false,
+        "button_text": "Continue"
+      },
+      "type": "statement"
+    },
+    {
+      "id": "TpzJ8mU3vxhz",
+      "title": "Final question",
+      "ref": "f6ca438e-cc32-4c9a-a74c-51ed9ed3cb53",
+      "properties": {
+        "hide_marks": false,
+        "button_text": "Continue"
+      },
+      "type": "statement"
+    }
+  ],
+  "logic": [
+    {
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "1cbab94c-96aa-4900-971a-16511733df3c"
+            }
+          },
+          "condition": {
+            "op": "equal",
+            "vars": [
+              {
+                "type": "field",
+                "value": "054e4eb0-f276-484a-bab4-f6c8c39035c5"
+              },
+              {
+                "type": "constant",
+                "value": "yay"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "310b1dd4-597c-41e9-bccb-9a35d1917e44"
+            }
+          },
+          "condition": {
+            "op": "equal",
+            "vars": [
+              {
+                "type": "field",
+                "value": "054e4eb0-f276-484a-bab4-f6c8c39035c5"
+              },
+              {
+                "type": "constant",
+                "value": "nay"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "25892c0c-9a5d-4079-88a7-8f1351dca607"
+            }
+          },
+          "condition": {
+            "op": "and",
+            "vars": [
+              {
+                "op": "not_equal",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "054e4eb0-f276-484a-bab4-f6c8c39035c5"
+                  },
+                  {
+                    "type": "constant",
+                    "value": "yay"
+                  }
+                ]
+              },
+              {
+                "op": "not_equal",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "054e4eb0-f276-484a-bab4-f6c8c39035c5"
+                  },
+                  {
+                    "type": "constant",
+                    "value": "nay"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "type": "field",
+      "ref": "054e4eb0-f276-484a-bab4-f6c8c39035c5"
+    },
+    {
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "f6ca438e-cc32-4c9a-a74c-51ed9ed3cb53"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ],
+      "type": "field",
+      "ref": "7b134749-353c-4d9b-b731-162289449871"
+    },
+    {
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "f6ca438e-cc32-4c9a-a74c-51ed9ed3cb53"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ],
+      "type": "field",
+      "ref": "12a27468-9375-4e77-ae5b-f46771c2e9b3"
+    }
+  ]
+}
