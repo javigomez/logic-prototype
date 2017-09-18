@@ -19,9 +19,8 @@ const IGNORED_BLOCK = 1
 const TARGET_BLOCK = 2
 
 describe('given a form with a block with a default jump', () => {
-  xit('returns the initial branch', () => {
+  it('returns the initial branch', () => {
     const fields = getCurrentBranch(defaultJumpForm)
-    console.log(fields)
     expect(fields.length).toBe(2)
     expect(getBlockRef({ fields }, 1)).not.toBe(getBlockRef(defaultJumpForm, IGNORED_BLOCK))
   })

@@ -11,10 +11,15 @@ const isRefApplicableToAction = (ref, action) => {
 }
 
 const isConditionMatching = (action, answers) => {
-  if (!answers) {
-    return false
+  if (action.condition.op === 'always') {
+    return true
   }
-  return action.condition.vars[1].value === answers[action.condition.vars[0].value]
+  if(action.condition.op === 'equal') {
+    if (!answers) {
+      return false
+    }
+    return action.condition.vars[1].value === answers[action.condition.vars[0].value]
+  }
 }
 
 const isVisible = (ref, logic, answers) => {
