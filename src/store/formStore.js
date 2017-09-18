@@ -1,5 +1,5 @@
 import getInitialState from './getInitialState'
-import evaluateLogic from '../logic/evaluateLogic'
+import isVisible from '../logic/isVisible'
 
 const actions = {
   commitAnswer: 'COMMIT_ANSWER'
@@ -42,25 +42,7 @@ export const getBlocks = state => state.fields
   Selects the current visible fields according to the logic
 */
 export const getCurrentBranch = (state) => {
-  if (!getLogic(state)) {
-    return getBlocks(state)
-  }
-
-  let logicFields = getLogic(state).map(logic =>
-    logic.actions
-      .filter(action =>
-        action.details.to.type === 'field'
-      ).map(action =>
-        action.details.to.value
-      )
-  )
-
-  logicFields = [].concat.apply([], logicFields)
-
   return getBlocks(state).filter(field => {
-    if (!logicFields.some(ref => ref === field.ref)) {
-      return true
-    }
-    return evaluateLogic(field.ref, getLogic(state), getAnswers(state))
+    return isVisible(field.ref, getLogic(state), getAnswers(state))
   })
 }
