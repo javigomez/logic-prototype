@@ -1,19 +1,19 @@
-const getActions = (ref, logics) => logics.find(logic => logic.ref === ref).actions
+import { evaluateCondition } from './model'
+
+const getActions = (ref, logic) => logic.find(logicItem => logicItem.ref === ref).actions
 
 const evaluateAction = (action, answers) => {
-  if (action.condition.op === 'equal') {
-    if (!answers || action.condition.vars[1].value !== answers[action.condition.vars[0].value]) {
-      return null
-    }
+  const operation = evaluateCondition(action.condition.op)
+
+  if (operation(action.condition, answers)) {
+    return action.details.to.value
   }
-  if(action.condition.op === 'and') {
-    return null
-  }
-  return action.details.to.value
+
+  return null
 }
 
 export const blockHasLogic = (ref, logic) => {
-  return logic.some(l => l.ref === ref)
+  return logic.some(logicItem => logicItem.ref === ref)
 }
 
 export const getNextBlockRef = (ref, logic, answers) => {

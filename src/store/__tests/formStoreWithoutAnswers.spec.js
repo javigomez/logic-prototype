@@ -1,9 +1,6 @@
 import { getCurrentBranch } from '../formStore'
 import formWithoutAnswers from './fixtures/noAnswersForm.json'
-
-const getBlockRef = (form, blockIndex) => {
-  return form.fields[blockIndex].ref
-}
+import { getBlockRef, answer } from './helpers'
 
 const SHORT_TEXT_BLOCK = 0
 

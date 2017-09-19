@@ -1,18 +1,6 @@
 import { getCurrentBranch, commitAnswer } from '../formStore'
 import yayOrNayForm from './fixtures/yayOrNayForm.json'
-
-const answer = (form, blockIndex, value) => {
-  return {
-    ...form,
-    answers: {
-      [getBlockRef(form, blockIndex)]: value
-    }
-  }
-}
-
-const getBlockRef = (form, blockIndex) => {
-  return form.fields[blockIndex].ref
-}
+import { getBlockRef, answer } from './helpers'
 
 const SHORT_TEXT_BLOCK = 0
 const YAY_STATEMENT = 1

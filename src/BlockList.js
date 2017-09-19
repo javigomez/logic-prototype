@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import logo from './logo.svg';
 import Block from './components/block'
 import './BlockList.css';
 import { getCurrentBranch } from './store/formStore'

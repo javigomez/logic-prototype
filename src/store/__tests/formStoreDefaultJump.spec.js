@@ -1,18 +1,6 @@
 import { getCurrentBranch } from '../formStore'
 import defaultJumpForm from './fixtures/defaultJumpForm.json'
-
-const answer = (form, blockIndex, value) => {
-  return {
-    ...form,
-    answers: {
-      [getBlockRef(form, blockIndex)]: value
-    }
-  }
-}
-
-const getBlockRef = (form, blockIndex) => {
-  return form.fields[blockIndex].ref
-}
+import { getBlockRef, answer } from './helpers'
 
 const JUMP_BLOCK = 0
 const IGNORED_BLOCK = 1
