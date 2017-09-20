@@ -2,6 +2,7 @@ export const answer = (form, blockIndex, value) => {
   return {
     ...form,
     answers: {
+      ...form.answers,
       [getBlockRef(form, blockIndex)]: value
     }
   }

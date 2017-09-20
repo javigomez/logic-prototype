@@ -1,0 +1,95 @@
+{
+  "id": "n8ajJL",
+  "title": "New typeform",
+  "variables": {
+    "score": 0
+  },
+  "theme": {
+    "href": "https:\/\/api.typeform.com\/themes\/gJ3gfQ"
+  },
+  "settings": {
+    "language": "en",
+    "is_public": true,
+    "progress_bar": "percentage",
+    "show_progress_bar": true,
+    "show_typeform_branding": true,
+    "meta": {
+      "allow_indexing": true
+    }
+  },
+  "fields": [{
+    "id": "QFNfxCHH0pOf",
+    "title": "do you like Camembert?",
+    "ref": "b84d86a7-23d3-4169-b773-bd2feb7bdbd1",
+    "properties": {
+      "description": "just answer yes or no"
+    },
+    "validations": {
+      "required": false
+    },
+    "type": "short_text"
+  }, {
+    "id": "eAKvtJHt1JHv",
+    "title": "do you like Manchego?",
+    "ref": "5342b8a7-e471-471a-809e-a458093634f0",
+    "properties": {
+      "description": "just answer yes or no"
+    },
+    "validations": {
+      "required": false
+    },
+    "type": "short_text"
+  }, {
+    "id": "wYPuetCd6zUQ",
+    "title": "Please tell us a cheese you like",
+    "ref": "545847f5-d70e-4b29-bb21-9fdfa873e693",
+    "validations": {
+      "required": false
+    },
+    "type": "short_text"
+  }, {
+    "id": "dyXnBn39nEck",
+    "title": "Great, we love cheese too",
+    "ref": "1b9cf3f5-6685-443a-b569-6ba0273e95ef",
+    "properties": {
+      "hide_marks": false,
+      "button_text": "Continue"
+    },
+    "type": "statement"
+  }],
+  "logic": [{
+    "actions": [{
+      "action": "jump",
+      "details": {
+        "to": {
+          "type": "field",
+          "value": "1b9cf3f5-6685-443a-b569-6ba0273e95ef"
+        }
+      },
+      "condition": {
+        "op": "and",
+        "vars": [{
+          "op": "equal",
+          "vars": [{
+            "type": "field",
+            "value": "5342b8a7-e471-471a-809e-a458093634f0"
+          }, {
+            "type": "constant",
+            "value": "yes"
+          }]
+        }, {
+          "op": "equal",
+          "vars": [{
+            "type": "field",
+            "value": "b84d86a7-23d3-4169-b773-bd2feb7bdbd1"
+          }, {
+            "type": "constant",
+            "value": "yes"
+          }]
+        }]
+      }
+    }],
+    "type": "field",
+    "ref": "5342b8a7-e471-471a-809e-a458093634f0"
+  }]
+}

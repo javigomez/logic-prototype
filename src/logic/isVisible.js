@@ -1,3 +1,5 @@
+import { evaluateCondition } from '../logic/model'
+
 // TODO: WRITE UNIT TEST FOR THIS
 const getLogicTargetingCurrentBlock = (ref, logic) => {
   return logic.reduce((prev, curr) => {
@@ -11,15 +13,9 @@ const isRefApplicableToAction = (ref, action) => {
 }
 
 const isConditionMatching = (action, answers) => {
-  if (action.condition.op === 'always') {
-    return true
-  }
-  if(action.condition.op === 'equal') {
-    if (!answers) {
-      return false
-    }
-    return action.condition.vars[1].value === answers[action.condition.vars[0].value]
-  }
+  const operation = evaluateCondition(action.condition.op)
+
+  return operation(action.condition, answers)
 }
 
 const isVisible = (ref, logic, answers) => {
@@ -28,7 +24,7 @@ const isVisible = (ref, logic, answers) => {
   if(!actions.length) {
     return true
   }
-  
+
   return actions.some(action => isConditionMatching(action, answers))
 }
 
